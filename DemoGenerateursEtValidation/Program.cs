@@ -1,9 +1,15 @@
 using DemoGenerateursEtValidation.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DbAutoContext>(optionsAction => {
+    optionsAction.UseSqlServer(builder.Configuration["ConnectionStrings:Cataloguedautos"]);
+
+});
 
 builder.Services.AddSingleton<IAutoRep, MemAutoRep>();
 
