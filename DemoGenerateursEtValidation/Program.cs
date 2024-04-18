@@ -5,13 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<MemAutoRep>();
 
 builder.Services.AddDbContext<DbAutoContext>(optionsAction => {
+    
     optionsAction.UseSqlServer(builder.Configuration["ConnectionStrings:Cataloguedautos"]);
 
 });
 
-builder.Services.AddSingleton<IAutoRep, MemAutoRep>();
+//builder.Services.AddSingleton<IAutoRep, MemAutoRep>();
 
 var app = builder.Build();
 
@@ -33,5 +35,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+InitialiserAuto.Seed(app);
 
 app.Run();

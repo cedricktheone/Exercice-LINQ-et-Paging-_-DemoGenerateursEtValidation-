@@ -5,7 +5,7 @@ namespace DemoGenerateursEtValidation.Models
     public class Auto
     {
         [Required]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Marque { get; set; }
@@ -21,9 +21,9 @@ namespace DemoGenerateursEtValidation.Models
 
         public Auto() { }
 
-        public Auto(int id, string marque, string model, double prix)
+        public Auto(string marque, string model, double prix)
         {
-            Id = id;
+           
             Marque = marque;
             Model = model;
             Prix = prix;

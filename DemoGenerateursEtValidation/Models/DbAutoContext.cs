@@ -4,7 +4,7 @@ namespace DemoGenerateursEtValidation.Models
 {
     public class DbAutoContext : DbContext
     {
-        public DbAutoContext(DbContextOptions options) : base(options)
+        public DbAutoContext(DbContextOptions<DbAutoContext> options) : base(options)
         {
         }
 
